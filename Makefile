@@ -4,7 +4,8 @@ INC_DIR = inc/
 
 SRC_DIR = ./src/
 
-SRC_FILES = main.c
+SRC_FILES = main.c\
+ 			get_tetriminos.c
 
 O_FILES = $(SRC_FILES:.c=.o)
 
@@ -12,7 +13,7 @@ CC = clang
 
 CC_FLAGS = -Wall -Werror -Wextra
 
-I_LIBFT = -Ilibft/includes
+I_LIBFT = -Ilibft
 
 LIBFT = -Llibft $(I_LIBFT) -lft
 
