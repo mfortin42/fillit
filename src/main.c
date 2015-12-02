@@ -16,6 +16,7 @@ int		main(int ac, char **av)
 {
 	t_env	env;
 
+	ft_bzero(&env, sizeof(env));
 	(void)ac;
 	(void)av;
 	(void)env;
