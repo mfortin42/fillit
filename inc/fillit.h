@@ -13,9 +13,14 @@
 #ifndef FILLIT_H
 # define FILLIT_H
 
+# define TETRI_TAB env->tetri_tab
+# define TETRI(x) env->tetri_tab[x*4]
+# define NB_TETRIS env->nb_tetris
+
 typedef struct	s_env
 {
-	int		toto;
+	char		**tetri_tab;
+	int		nb_tetri;
 }				t_env;
 
 #endif
