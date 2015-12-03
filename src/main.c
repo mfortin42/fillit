@@ -6,7 +6,7 @@
 /*   By: mfortin <mfortin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/02 20:31:51 by mfortin           #+#    #+#             */
-/*   Updated: 2015/12/03 15:09:26 by mfortin          ###   ########.fr       */
+/*   Updated: 2015/12/03 16:18:02 by mfortin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,5 +36,6 @@ int				main(int ac, char **av)
 	init_env(&env);
 	check_ac_av(&env, &ac, av);
 	get_tetriminos(t_env &env);
+	check_tetriminos(t_env &env);
 	return (0);
 }

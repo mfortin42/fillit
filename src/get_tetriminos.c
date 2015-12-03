@@ -6,7 +6,7 @@
 /*   By: mfortin <mfortin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/02 20:28:52 by mfortin           #+#    #+#             */
-/*   Updated: 2015/12/03 14:58:15 by mfortin          ###   ########.fr       */
+/*   Updated: 2015/12/03 16:17:00 by mfortin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,4 +28,19 @@ void		get_tetriminos(t_env *env)
 	VREAD = read(FD, BUFF, BUFF_SIZE);
 	BUFF[VREAD] = '\0';
 	TETRI_TAB = ft_strsplit(BUFF, '\n');
+}
+
+void		check_tetriminos(t_env *env)
+{
+	X = 0;
+
+	while (TETRI_TAB[X] != NULL)
+	{
+		Y = 0;
+		while (TETRI_TAB[X][Y] != '\0')
+		{
+			Y++;
+		}
+		X++;
+	}
 }

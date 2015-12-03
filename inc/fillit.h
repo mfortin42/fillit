@@ -6,7 +6,7 @@
 /*   By: mfortin <mfortin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/02 20:28:52 by mfortin           #+#    #+#             */
-/*   Updated: 2015/12/03 15:00:57 by mfortin          ###   ########.fr       */
+/*   Updated: 2015/12/03 16:17:25 by mfortin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,17 +21,22 @@
 # define VREAD env->vread
 # define BUFF env->buff
 # define BUFF_SIZE 545
+# define X env->x
+# define Y env->y
 
-typedef struct	s_env
+typedef struct		s_env
 {
-	char		**tetri_tab;
-	int			nb_tetri;
-	char		*filename;
-	int			fd;
-	int			vread;
-	char		buff[BUFF_SIZE + 1];
-}				t_env;
+	char			**tetri_tab;
+	unsigned int	nb_tetri;
+	char			*filename;
+	int				fd;
+	int				vread;
+	char			buff[BUFF_SIZE + 1];
+	unsigned int	x;
+	unsigned int	y;
+}					t_env;
 
 void			get_tetriminos(t_env *env);
+void			check_tetriminos(t_env *env);
 
 #endif
