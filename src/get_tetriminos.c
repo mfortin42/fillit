@@ -20,7 +20,7 @@ void		get_tetriminos(t_env *env)
 	NB_TETRI = 0;
 	FD = open(FILENAME, O_RDONLY);
 
-	if (FD == NULL)
+	if (FD == -1)
 	{
 		ft_putendl_fd("error: can't opening file", 2);
 		exit(1);
