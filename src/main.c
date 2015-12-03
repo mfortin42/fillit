@@ -6,12 +6,12 @@
 /*   By: mfortin <mfortin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/02 20:31:51 by mfortin           #+#    #+#             */
-/*   Updated: 2015/12/03 14:57:36 by mfortin          ###   ########.fr       */
+/*   Updated: 2015/12/03 15:09:26 by mfortin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
-#include <libft.h>
+#include "libft.h"
 #include <stdlib.h>
 
 static void		init_env(t_env *env)
