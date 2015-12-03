@@ -18,14 +18,18 @@ void		get_tetriminos(t_env *env)
 {
 	TETRI_TAB = NULL;
 	NB_TETRI = 0;
-	FD = open(FILENAME, O_RDONLY);
 
-	if (FD == -1)
+	if ((FD = open(FILENAME, O_RDONLY)) == -1)
 	{
 		ft_putendl_fd("error: can't opening file", 2);
 		exit(1);
 	}
 	VREAD = read(FD, BUFF, BUFF_SIZE);
+	if ((close(FD)) == -1)
+	{
+		ft_putendl_fd("error: can't close file", 2);
+		exit(1);
+	}
 	BUFF[VREAD] = '\0';
 	if (((VREAD + 1) % 21) != 0)
 	{
