@@ -35,7 +35,7 @@ int				main(int ac, char **av)
 
 	init_env(&env);
 	check_ac_av(&env, &ac, av);
-	get_tetriminos(t_env &env);
-	check_tetriminos(t_env &env);
+	get_tetriminos(&env);
+	check_tetriminos(&env);
 	return (0);
 }
