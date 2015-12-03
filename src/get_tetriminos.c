@@ -27,6 +27,11 @@ void		get_tetriminos(t_env *env)
 	}
 	VREAD = read(FD, BUFF, BUFF_SIZE);
 	BUFF[VREAD] = '\0';
+	if (((VREAD + 1) % 21) != 0)
+	{
+		ft_putstr("error");
+		exit(1);
+	}
 	TETRI_TAB = ft_strsplit(BUFF, '\n');
 }
 
