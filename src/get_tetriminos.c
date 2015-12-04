@@ -6,7 +6,7 @@
 /*   By: mfortin <mfortin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/02 20:28:52 by mfortin           #+#    #+#             */
-/*   Updated: 2015/12/04 13:19:28 by mfortin          ###   ########.fr       */
+/*   Updated: 2015/12/04 13:25:16 by mfortin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,6 @@ void		get_tetriminos(t_env *env)
 {
 	TETRI_TAB = NULL;
 	NB_TETRI = 0;
-
 	if ((FD = open(FILENAME, O_RDONLY)) == -1)
 	{
 		ft_putendl_fd("error: can't opening file", 2);
@@ -42,7 +41,6 @@ void		get_tetriminos(t_env *env)
 void		check_tetriminos(t_env *env)
 {
 	X = -1;
-
 	while (TETRI_TAB[++X] != NULL)
 	{
 		Y = -1;
