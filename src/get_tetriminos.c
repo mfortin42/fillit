@@ -45,7 +45,7 @@ void		check_tetriminos(t_env *env)
 	{
 		Y = -1;
 		while (TETRI_TAB[X][++Y] != '\0')
-			if (TETRI_TAB[X][Y] != '.' || TETRI_TAB[X][Y] != '#')
+			if (TETRI_TAB[X][Y] != '.' && TETRI_TAB[X][Y] != '#')
 			{
 				ft_putendl_fd("error: wrong character", 2);
 				exit(1);
