@@ -6,7 +6,7 @@
 /*   By: mfortin <mfortin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/02 20:28:52 by mfortin           #+#    #+#             */
-/*   Updated: 2015/12/03 16:17:00 by mfortin          ###   ########.fr       */
+/*   Updated: 2015/12/04 13:19:28 by mfortin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,15 +41,26 @@ void		get_tetriminos(t_env *env)
 
 void		check_tetriminos(t_env *env)
 {
-	X = 0;
+	X = -1;
 
-	while (TETRI_TAB[X] != NULL)
+	while (TETRI_TAB[++X] != NULL)
 	{
-		Y = 0;
-		while (TETRI_TAB[X][Y] != '\0')
+		Y = -1;
+		while (TETRI_TAB[X][++Y] != '\0')
+			if (TETRI_TAB[X][Y] != '.' || TETRI_TAB[X][Y] != '#')
+			{
+				ft_putendl_fd("error: wrong character", 2);
+				exit(1);
+			}
+		if (Y != 4)
 		{
-			Y++;
+			ft_putendl_fd("error: wrong length size", 2);
+			exit(1);
 		}
-		X++;
+	}
+	if ((X + 1) % 4 != 0)
+	{
+		ft_putendl_fd("error: wrong number of lines", 2);
+		exit(1);
 	}
 }

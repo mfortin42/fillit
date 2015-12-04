@@ -6,7 +6,7 @@
 /*   By: mfortin <mfortin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/02 20:28:52 by mfortin           #+#    #+#             */
-/*   Updated: 2015/12/03 16:17:25 by mfortin          ###   ########.fr       */
+/*   Updated: 2015/12/04 13:08:32 by mfortin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,8 +32,8 @@ typedef struct		s_env
 	int				fd;
 	int				vread;
 	char			buff[BUFF_SIZE + 1];
-	unsigned int	x;
-	unsigned int	y;
+	int				x;
+	int				y;
 }					t_env;
 
 void			get_tetriminos(t_env *env);
