@@ -32,6 +32,31 @@ static void		check_tetriminos(t_env *env)
 	NB_TETRI = (X + 1) % 4;
 }
 
+static void		check_tetriminos_bis(t_env *env)
+{
+	int cnt:
+	int i;
+	
+	cnt = 0;
+	X = 0;
+	while (TETRI_STRTAB[X] != NULL)
+	{
+		i = -1;
+		while (++i < 16)
+		{
+			if (TETRI_STRTAB[X][++Y] == '#')
+				cnt++;
+			if (((i + 1) % 4) == 0)
+			{
+				X++;
+				Y = -1;
+			}
+		}
+		if ((cnt % 4) != 0)
+			ft_exit("error: wrong '#' number");
+	}
+}
+
 static void		convert_strtab_to_tetri(t_env *env)
 {
 	int		i;
