@@ -36,7 +36,7 @@ static void		convert_strtab_to_tetri(t_env *env)
 {
 	int		i;
 
-	if ((env->tetri = (t_tetri**)ft_memalloc(sizeof(t_tetri*) * NB_TETRI)) == NULL)
+	if (!(env->tetri = (t_tetri**)ft_memalloc(sizeof(t_tetri*) * NB_TETRI)))
 		ft_exit("malloc error");
 	i = -1;
 	while (++i < NB_TETRI)
