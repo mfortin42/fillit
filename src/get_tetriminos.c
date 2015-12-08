@@ -42,10 +42,10 @@ static void		convert_strtab_to_tetri(t_env *env)
 	while (++i < NB_TETRI)
 	{
 		if (!(TETRI[i] = (t_tetri*)ft_memalloc(sizeof(t_tetri)))
-		|| !(TETRI_CONTENT(i)[0] = ft_strsub(TETRI_STRTAB[i * 5], 0, 4))
-		|| !(TETRI_CONTENT(i)[1] = ft_strsub(TETRI_STRTAB[i * 5 + 1], 0, 4))
-		|| !(TETRI_CONTENT(i)[2] = ft_strsub(TETRI_STRTAB[i * 5 + 2], 0, 4))
-		|| !(TETRI_CONTENT(i)[3] = ft_strsub(TETRI_STRTAB[i * 5 + 3], 0, 4)))
+		|| !(TETRI_CONTENT(i)[0] = ft_strsub(TETRI_STRTAB[i * 4], 0, 4))
+		|| !(TETRI_CONTENT(i)[1] = ft_strsub(TETRI_STRTAB[i * 4 + 1], 0, 4))
+		|| !(TETRI_CONTENT(i)[2] = ft_strsub(TETRI_STRTAB[i * 4 + 2], 0, 4))
+		|| !(TETRI_CONTENT(i)[3] = ft_strsub(TETRI_STRTAB[i * 4 + 3], 0, 4)))
 			ft_exit("malloc error");
 		TETRI_X(i) = 0;
 		TETRI_Y(i) = 0;
