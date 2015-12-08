@@ -49,7 +49,6 @@ static void		convert_strtab_to_tetri(t_env *env)
 			ft_exit("malloc error");
 		TETRI_X(i) = 0;
 		TETRI_Y(i) = 0;
-		i += 4;
 	}
 }
 
