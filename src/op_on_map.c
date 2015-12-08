@@ -22,7 +22,7 @@ void	del_tetri_in_map(t_env *env, int nb_tetri)
 
 	nb_tetri += 48; // ajout de 48 car int0 != char0 (voir table ascii)
 	i = -1;
-	while (i < MAP_SIZE)
+	while (++i < MAP_SIZE)
 	{
 		j = -1;
 		while (++j < MAP_SIZE)
