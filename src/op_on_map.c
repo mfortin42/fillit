@@ -1,36 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   op_on_map.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mfortin <mfortin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/12/02 20:31:51 by mfortin           #+#    #+#             */
-/*   Updated: 2015/12/08 00:21:49 by wide-aze         ###   ########.fr       */
+/*   Created: 2015/12/02 20:28:52 by mfortin           #+#    #+#             */
+/*   Updated: 2015/12/08 01:00:46 by wide-aze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
-#include "libft.h"
 
-static void		init_env(t_env *env)
+/*
+** Delete the specified tetri in the map
+*/
+void	del_tetri_in_map(t_env *env, int nb_tetri)
 {
-	ft_bzero(env, sizeof(*env));
-}
+	int		i;
+	int		j;
 
-static void		check_ac_av(t_env *env, int *ac, char **av)
-{
-	if (*ac != 2)
-		ft_exit("error: you must specify one and only one argument");
-	FILENAME = av[1];
-}
-
-int				main(int ac, char **av)
-{
-	t_env	env;
-
-	init_env(&env);
-	check_ac_av(&env, &ac, av);
-	get_tetriminos(&env); // la fonction appelle les autres (get+check)
-	return (0);
+	nb_tetri += 48; // ajout de 48 car int0 != char0 (voir table ascii)
+	i = -1;
+	while (i < MAP_SIZE)
+	{
+		j = -1;
+		while (++j < MAP_SIZE)
+			if (MAP[i][j] == nb_tetri)
+				MAP[i][j] = '\0';
+	}
 }

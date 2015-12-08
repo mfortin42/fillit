@@ -6,7 +6,7 @@
 #    By: mfortin <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/11/23 20:51:06 by mfortin           #+#    #+#              #
-#    Updated: 2015/11/24 11:26:02 by mfortin          ###   ########.fr        #
+#    Updated: 2015/12/07 23:51:47 by dw31             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,6 +16,7 @@ NAME = libft.a
 
 SRC = ft_atoi.c \
 		ft_bzero.c \
+		ft_exit.c \
 		ft_isalnum.c \
 		ft_isalpha.c \
 		ft_isascii.c \

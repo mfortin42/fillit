@@ -4,8 +4,9 @@ INC_DIR = inc/
 
 SRC_DIR = ./src/
 
-SRC_FILES = main.c\
- 			get_tetriminos.c
+SRC_FILES = main.c \
+ 			get_tetriminos.c \
+ 			op_on_map.c
 
 O_FILES = $(SRC_FILES:.c=.o)
 
