@@ -39,6 +39,7 @@ static void		check_tetriminos_bis(t_env *env)
 	
 	cnt = 0;
 	X = 0;
+	Y = -1:
 	while (TETRI_STRTAB[X] != NULL)
 	{
 		i = -1;
@@ -91,5 +92,6 @@ void			get_tetriminos(t_env *env)
 	if ((TETRI_STRTAB = ft_strsplit(BUFF, '\n')) == NULL)
 		ft_exit("error");
 	check_tetriminos(env);
+	check_tetriminos_bis(env);
 	convert_strtab_to_tetri(env);
 }
