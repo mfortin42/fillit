@@ -18,10 +18,10 @@ static void		search_first_sharp(t_env *env, int i, int *x, int *y)
 	// on cherche la position du premier # dans le tetri i
 	// on recoit en parametre l'adresse de x/y pour pouvoir ecrire directement dedans
 	// des qu'on le trouve on peut return, x/y sont deja sur la bonne position
-	*y = 0;
+	*y = -1;
 	while (++(*y) < 4)
 	{
-		*x = 0;
+		*x = -1;
 		while (++(*x) < 4)
 			if (TETRI_CONTENT(i)[*y][*x] == '#')
 				return ;
