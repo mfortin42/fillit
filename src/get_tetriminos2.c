@@ -28,46 +28,59 @@ static void		search_first_sharp(t_env *env, int i, int *x, int *y)
 	}
 }
 
-// j'ai fait une autre fonction pour passer les 25lignes de la norme...
-static void		check_one_tetri_composition(t_env *env, int i, int x, int y)
+static void		assign_last_x_y(int x, int y, int *last_x, int *last_y)
 {
-	int		count;
+	*last_y = y;
+	*last_x = x;
+}
 
-	count = 0;
-	search_first_sharp(env, i, &x, &y);
+static void		check_1tetri_compo(t_env *env, int i, int count, int must_exit)
+{
+	int		last_x;
+	int		last_y;
+
+	assign_last_x_y(-1, -1, &last_x, &last_y);
 	while (count < 4)
 	{
-		if (x >= 0 && y >= 0 && x + 1 < 4
-		&& y < 4 && TETRI_CONTENT(i)[y][x + 1] == '#')
-			x++;
-		else if (x - 1 >= 0 && y >= 0 && x < 4
-		&& y < 4 && TETRI_CONTENT(i)[y][x - 1] == '#')
-			x--;
-		else if (x >= 0 && y >= 0 && x < 4
-		&& y + 1 < 4 && TETRI_CONTENT(i)[y + 1][x] == '#')
-			y++;
-		else if (x >= 0 && y -1 >= 0 && x < 4
-		&& y < 4 && TETRI_CONTENT(i)[y - 1][x] == '#')
-			y--;
-		else
+		if ((X != last_x || Y != last_y) && X >= 0 && Y >= 0 && X + 1 < 4
+		&& Y < 4 && TETRI_CONTENT(i)[Y][X + 1] == '#')
+			assign_last_x_y(X++, Y, &last_x, &last_y);
+		else if ((X != last_x || Y != last_y) && X - 1 >= 0 && Y >= 0 && X < 4
+		&& Y < 4 && TETRI_CONTENT(i)[Y][X - 1] == '#')
+			assign_last_x_y(X--, Y, &last_x, &last_y);
+		else if ((X != last_x || Y != last_y) && X >= 0 && Y >= 0 && X < 4
+		&& Y + 1 < 4 && TETRI_CONTENT(i)[Y + 1][X] == '#')
+			assign_last_x_y(X, Y++, &last_x, &last_y);
+		else if ((X != last_x || Y != last_y) && X >= 0 && Y - 1 >= 0 && X < 4
+		&& Y < 4 && TETRI_CONTENT(i)[Y - 1][X] == '#')
+			assign_last_x_y(X, Y--, &last_x, &last_y);
+		else if (must_exit)
 			ft_exit("error: somes # aren't nears");
-		count++; // inutile de le faire pour chaque cas plus haut, si on est la c'est qu'on a bien trouve un # (sinon ca aurait exit)
+		else if (!must_exit)
+			return ;
+		count++;
 	}
 }
 
 void			check_each_tetri_composition(t_env *env)
 {
 	int		i;
-	int		x;
-	int		y;
 
 // pour chaque tetri:
 	// on cherche le premier #
-	// puis on cherche dans ses cases adjacentes s'il y a un #
+	// on le remonte dans un sens pour etre sur d'etre a l'extremite
+	// puis on peut commencer le check en cherchant dans ses cases adjacentes s'il y a un #
 	// soit x-1 x+1 y-1 y+1 (avec verif qu'on soit pas <0 ni >3)
+	X = 0;
+	Y = 0;
 	i = -1;
-	x = 0;
-	y = 0;
 	while (++i < NB_TETRI)
-		check_one_tetri_composition(env, i, x, y);
+	{
+	  // on se position sur le premier '#' trouve
+		search_first_sharp(env, i, &X, &Y);
+	// on remonte jusqu'a l'extremite (on pouvait etre en plein milieu)
+		check_1tetri_compo(env, i, 0, 0);
+	// on le remonte dans l'autre sens en quittant si erreur (le param 1 ou 0 definit si cette verif est active)
+		check_1tetri_compo(env, i, 0, 1);
+	}
 }
