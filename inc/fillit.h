@@ -6,7 +6,7 @@
 /*   By: mfortin <mfortin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/02 20:28:52 by mfortin           #+#    #+#             */
-/*   Updated: 2015/12/08 01:07:29 by wide-aze         ###   ########.fr       */
+/*   Updated: 2015/12/09 08:15:05 by wide-aze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,9 +31,9 @@
 
 typedef struct		s_tetri
 {
-	char			**content; //contenu du tetri
-	int				x; // position x du tetri
-	int				y; // position y du tetri
+	char			**content;
+	int				x;
+	int				y;
 }					t_tetri;
 
 typedef struct		s_env
@@ -48,10 +48,12 @@ typedef struct		s_env
 	int				y;
 	char			**map;
 	int				map_size;
-	t_tetri			**tetri; // tableau de structure tetri
+	t_tetri			**tetri;
 }					t_env;
 
 void			get_tetriminos(t_env *env);
 void			del_tetri_in_map(t_env *env, int nb_tetri);
+void			check_each_tetri_composition(t_env *env);
+
 
 #endif

@@ -6,6 +6,7 @@ SRC_DIR = ./src/
 
 SRC_FILES = main.c \
  			get_tetriminos.c \
+ 			get_tetriminos2.c \
  			op_on_map.c
 
 O_FILES = $(SRC_FILES:.c=.o)

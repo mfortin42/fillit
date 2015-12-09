@@ -6,7 +6,7 @@
 /*   By: mfortin <mfortin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/02 20:28:52 by mfortin           #+#    #+#             */
-/*   Updated: 2015/12/08 08:06:14 by wide-aze         ###   ########.fr       */
+/*   Updated: 2015/12/09 08:17:08 by wide-aze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,19 +27,19 @@ static void		check_tetriminos(t_env *env)
 		if (Y != 4)
 			ft_exit("error: wrong length size");
 	}
-	if ((X + 1) % 4 != 0)
+	if (X % 4 != 0)
 		ft_exit("error: wrong number of lines");
-	NB_TETRI = (X + 1) % 4;
+	NB_TETRI = X / 4;
 }
 
 static void		check_tetriminos_bis(t_env *env)
 {
-	int cnt:
+	int cnt;
 	int i;
 	
 	cnt = 0;
 	X = 0;
-	Y = -1:
+	Y = -1;
 	while (TETRI_STRTAB[X] != NULL)
 	{
 		i = -1;
@@ -68,6 +68,7 @@ static void		convert_strtab_to_tetri(t_env *env)
 	while (++i < NB_TETRI)
 	{
 		if (!(TETRI[i] = (t_tetri*)ft_memalloc(sizeof(t_tetri)))
+		|| !(TETRI_CONTENT(i) = (char**)ft_memalloc(sizeof(char*) * 4))
 		|| !(TETRI_CONTENT(i)[0] = ft_strsub(TETRI_STRTAB[i * 4], 0, 4))
 		|| !(TETRI_CONTENT(i)[1] = ft_strsub(TETRI_STRTAB[i * 4 + 1], 0, 4))
 		|| !(TETRI_CONTENT(i)[2] = ft_strsub(TETRI_STRTAB[i * 4 + 2], 0, 4))
@@ -94,4 +95,5 @@ void			get_tetriminos(t_env *env)
 	check_tetriminos(env);
 	check_tetriminos_bis(env);
 	convert_strtab_to_tetri(env);
+	check_each_tetri_composition(env);
 }
