@@ -6,24 +6,23 @@
 /*   By: mfortin <mfortin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/02 20:28:52 by mfortin           #+#    #+#             */
-/*   Updated: 2015/12/09 08:38:09 by wide-aze         ###   ########.fr       */
+/*   Updated: 2015/12/10 08:29:17 by dw31             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
 #include "libft.h"
 
-static void		search_first_sharp(t_env *env, int i, int *x, int *y)
+static void		search_first_sharp(t_env *env, int i)
 {
 	// on cherche la position du premier # dans le tetri i
-	// on recoit en parametre l'adresse de x/y pour pouvoir ecrire directement dedans
 	// des qu'on le trouve on peut return, x/y sont deja sur la bonne position
-	*y = -1;
-	while (++(*y) < 4)
+	Y = -1;
+	while (++Y < 4)
 	{
-		*x = -1;
-		while (++(*x) < 4)
-			if (TETRI_CONTENT(i)[*y][*x] == '#')
+		X = -1;
+		while (++X < 4)
+			if (TETRI_CONTENT(i)[Y][X] == '#')
 				return ;
 	}
 }
@@ -77,7 +76,7 @@ void			check_each_tetri_composition(t_env *env)
 	while (++i < NB_TETRI)
 	{
 	  // on se position sur le premier '#' trouve
-		search_first_sharp(env, i, &X, &Y);
+		search_first_sharp(env, i);
 	// on remonte jusqu'a l'extremite (on pouvait etre en plein milieu)
 		check_1tetri_compo(env, i, 0, 0);
 	// on le remonte dans l'autre sens en quittant si erreur (le param 1 ou 0 definit si cette verif est active)

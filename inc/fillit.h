@@ -6,7 +6,7 @@
 /*   By: mfortin <mfortin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/02 20:28:52 by mfortin           #+#    #+#             */
-/*   Updated: 2015/12/09 21:51:11 by dw31             ###   ########.fr       */
+/*   Updated: 2015/12/10 08:21:32 by dw31             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,11 +23,14 @@
 # define X env->x
 # define Y env->y
 # define MAP env->map
-# define MAP_SIZE env->map_size
+# define MAP_WIDTH env->map_width
+# define MAP_SIZE env->size_map
 # define TETRI env->tetri
 # define TETRI_CONTENT(i) env->tetri[i]->content
 # define TETRI_X(i) env->tetri[i]->x
 # define TETRI_Y(i) env->tetri[i]->y
+# define TETRI_SAVED env->tetri_saved
+# define SIZE_MAP_SAVED env->size_map_saved
 
 typedef struct		s_tetri
 {
@@ -47,13 +50,18 @@ typedef struct		s_env
 	int				x;
 	int				y;
 	char			**map;
-	int				map_size;
+	int				size_map;
+	int				size_map_saved;
+	int				map_width;
 	t_tetri			**tetri;
+	t_tetri			**tetri_saved;
 }					t_env;
 
+void			check_each_tetri_composition(t_env *env);
 void			get_tetriminos(t_env *env);
 void			del_tetri_in_map(t_env *env, int nb_tetri);
-void			check_each_tetri_composition(t_env *env);
+int				add_tetri_in_map(t_env *env, int nb_tetri);
+void			save_map(t_env *env);
 void			recursive_solver(t_env *env, int cur_tetri);
 void			print_solved_map(t_env *env);
 

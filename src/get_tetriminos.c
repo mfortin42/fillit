@@ -6,7 +6,7 @@
 /*   By: mfortin <mfortin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/02 20:28:52 by mfortin           #+#    #+#             */
-/*   Updated: 2015/12/09 08:17:08 by wide-aze         ###   ########.fr       */
+/*   Updated: 2015/12/09 22:33:19 by dw31             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,8 @@ static void		check_tetriminos(t_env *env)
 	}
 	if (X % 4 != 0)
 		ft_exit("error: wrong number of lines");
-	NB_TETRI = X / 4;
+	if ((NB_TETRI = X / 4) > 26)
+		ft_exit("error: wrong number of tetriminos (max 26)");		
 }
 
 static void		check_tetriminos_bis(t_env *env)
