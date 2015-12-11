@@ -6,12 +6,16 @@
 /*   By: mfortin <mfortin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/02 20:28:52 by mfortin           #+#    #+#             */
-/*   Updated: 2015/12/10 08:21:32 by dw31             ###   ########.fr       */
+/*   Updated: 2015/12/11 23:57:48 by dw31             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FILLIT_H
 # define FILLIT_H
+
+// A SUPPRIMER
+#include "libft.h"
+// A SUPPRIMER
 
 # define TETRI_STRTAB env->tetri_tab
 # define NB_TETRI env->nb_tetri
@@ -22,8 +26,8 @@
 # define BUFF_SIZE 545
 # define X env->x
 # define Y env->y
+# define MAP_WIDTH (NB_TETRI * 4)
 # define MAP env->map
-# define MAP_WIDTH env->map_width
 # define MAP_SIZE env->size_map
 # define TETRI env->tetri
 # define TETRI_CONTENT(i) env->tetri[i]->content
@@ -59,6 +63,7 @@ typedef struct		s_env
 
 void			check_each_tetri_composition(t_env *env);
 void			get_tetriminos(t_env *env);
+void			replace_tetri_in_map(t_env *env, int nb_tetri, char c);
 void			del_tetri_in_map(t_env *env, int nb_tetri);
 int				add_tetri_in_map(t_env *env, int nb_tetri);
 void			save_map(t_env *env);

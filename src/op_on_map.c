@@ -6,47 +6,73 @@
 /*   By: mfortin <mfortin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/02 20:28:52 by mfortin           #+#    #+#             */
-/*   Updated: 2015/12/10 08:18:21 by dw31             ###   ########.fr       */
+/*   Updated: 2015/12/12 00:02:46 by dw31             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
 
-/*
-* Delete the specified tetri in the map
-*/
-void	del_tetri_in_map(t_env *env, int nb_tetri)
+void	replace_tetri_in_map(t_env *env, int nb_tetri, char c)
 {
 	int		i;
 	int		j;
 
-	nb_tetri += 48; // ajout de 48 car int0 != char0 (voir table ascii)
+	nb_tetri += '0';
 	i = -1;
 	while (++i < MAP_WIDTH)
 	{
 		j = -1;
 		while (++j < MAP_WIDTH)
 			if (MAP[i][j] == nb_tetri)
-				MAP[i][j] = '\0';
+				MAP[i][j] = c;
 	}
 }
 
-/*
-* Add the specified tetri in the map + update map size (return -1 if impossible)
-*/
 int		add_tetri_in_map(t_env *env, int nb_tetri)
 {
-	(void)env;
-	(void)nb_tetri;
-	return (-1);
-//add_tetri_in_map() which return 0 if ok or -1 if impossible to place for any reason (out of map/already a tetri here)
+	int		i;
+	int		j;
+
+	i = -1;
+	while (++i < 4)
+	{
+		j = -1;
+		while (++j < 4)
+		{
+			if (TETRI_Y(nb_tetri) + i >= MAP_WIDTH
+			|| TETRI_X(nb_tetri) + j >= MAP_WIDTH
+			|| MAP[TETRI_Y(nb_tetri) + i][TETRI_Y(nb_tetri) + j] != 0)
+			{
+				replace_tetri_in_map(env, nb_tetri, 0);
+				return (-1);
+			}
+			if (TETRI_CONTENT(nb_tetri)[i][j] == '#')
+				MAP[TETRI_Y(nb_tetri) + i][TETRI_Y(nb_tetri) + j] = nb_tetri
+				+ '0';
+		}
+	}
+ft_putendl("piece placed");	
+	return (0);
+
+//update map size (return -1 if impossible)
+//return 0 if ok
+//return -1 if impossible to place for any reason (out of map/already a tetri here)
 }
 
-/*
-* Save the map/map size
-*/
 void	save_map(t_env *env)
 {
-	(void)env;
-//save_map() do a memcpy for each tetri + copy the map size
+ft_putendl("map_saved");
+	int		i;
+
+	i = -1;
+	while (++i < NB_TETRI)
+	{
+		TETRI_SAVED[i]->x = TETRI[i]->x;
+		TETRI_SAVED[i]->y = TETRI[i]->y;
+		TETRI_SAVED[i]->content[0] = TETRI[i]->content[0];
+		TETRI_SAVED[i]->content[1] = TETRI[i]->content[1];
+		TETRI_SAVED[i]->content[2] = TETRI[i]->content[2];
+		TETRI_SAVED[i]->content[3] = TETRI[i]->content[3];
+	}
+	SIZE_MAP_SAVED = MAP_SIZE;
 }
