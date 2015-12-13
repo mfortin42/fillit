@@ -6,11 +6,12 @@
 /*   By: mfortin <mfortin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/02 20:28:52 by mfortin           #+#    #+#             */
-/*   Updated: 2015/12/13 16:29:43 by wide-aze         ###   ########.fr       */
+/*   Updated: 2015/12/13 16:34:14 by wide-aze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
+#include "libft.h"
 
 static int	calc_map_size(t_env *env)
 {

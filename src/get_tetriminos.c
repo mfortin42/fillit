@@ -6,7 +6,7 @@
 /*   By: mfortin <mfortin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/02 20:28:52 by mfortin           #+#    #+#             */
-/*   Updated: 2015/12/13 16:24:46 by wide-aze         ###   ########.fr       */
+/*   Updated: 2015/12/13 16:36:46 by wide-aze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,8 +105,8 @@ void			get_tetriminos(t_env *env)
 	if ((close(FD)) == -1)
 		ft_exit("error");
 	BUFF[VREAD] = '\0';
-	if (((VREAD + 1) % 21) != 0)
-		ft_exit("error");
+	if (((VREAD + 1) % 21) != 0 || ft_strstr(BUFF, "\n\n\n") != NULL)
+		ft_exit("erroro");
 	if ((TETRI_STRTAB = ft_strsplit(BUFF, '\n')) == NULL)
 		ft_exit("error");
 	check_tetriminos(env);
