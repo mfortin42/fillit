@@ -6,7 +6,7 @@
 /*   By: mfortin <mfortin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/02 20:28:52 by mfortin           #+#    #+#             */
-/*   Updated: 2015/12/13 16:36:46 by wide-aze         ###   ########.fr       */
+/*   Updated: 2015/12/13 17:07:52 by wide-aze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,6 +98,8 @@ static void		convert_strtab_to_tetri(t_env *env)
 
 void			get_tetriminos(t_env *env)
 {
+	int		i;
+
 	if ((FD = open(FILENAME, O_RDONLY)) == -1)
 		ft_exit("error");
 	if ((VREAD = read(FD, BUFF, BUFF_SIZE)) == -1)
@@ -106,11 +108,18 @@ void			get_tetriminos(t_env *env)
 		ft_exit("error");
 	BUFF[VREAD] = '\0';
 	if (((VREAD + 1) % 21) != 0 || ft_strstr(BUFF, "\n\n\n") != NULL)
-		ft_exit("erroro");
+		ft_exit("error");
 	if ((TETRI_STRTAB = ft_strsplit(BUFF, '\n')) == NULL)
 		ft_exit("error");
 	check_tetriminos(env);
 	check_tetriminos_bis(env);
 	convert_strtab_to_tetri(env);
 	check_each_tetri_composition(env);
+	i = -1;
+	while (++i < NB_TETRI - 1)
+	{
+		if (BUFF[((i + 1) * 20 + i - 1)] != '\n'
+		|| BUFF[((i + 1) * 20 + i)] != '\n')
+			ft_exit("error");
+	}
 }
