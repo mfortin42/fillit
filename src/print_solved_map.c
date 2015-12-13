@@ -6,7 +6,7 @@
 /*   By: mfortin <mfortin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/09 20:31:51 by mfortin           #+#    #+#             */
-/*   Updated: 2015/12/13 15:51:04 by wide-aze         ###   ########.fr       */
+/*   Updated: 2015/12/13 16:08:00 by wide-aze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,24 +47,20 @@ static void		fill_map(t_env *env)
 	char	c;
 
 	i = -1;
+	c = 'a';
 	while (++i < NB_TETRI)
 		add_tetri_in_map(env, i);
-	c = 'a';
 	i = -1;
 	while (++i < MAP_SIZE)
 	{
 		j = -1;
 		while (++j < MAP_SIZE)
-			if (MAP[i][j] >= 48 && MAP[i][j] <= 74)
-				replace_tetri_in_map(env, MAP[i][j] - '0', c++);
-	}
-	i = -1;
-	while (++i < MAP_SIZE)
-	{
-		j = -1;
-		while (++j < MAP_SIZE)
-			if (MAP[i][j] >= 97 && MAP[i][j] <= 122)
-				MAP[i][j] -= 32;
+		{
+			if (MAP[i][j])
+				MAP[i][j] += 17;
+			else
+				MAP[i][j] = '.';
+		}
 	}
 }
 
@@ -77,7 +73,6 @@ void	print_solved_map(t_env *env)
 	empty_map(env);
 	fill_map(env);
 	i = -1;
-// printf("SIZE_MAP_SAVED=%d\n", SIZE_MAP_SAVED);
 	while (++i < MAP_SIZE)
 	{
 		j = -1;

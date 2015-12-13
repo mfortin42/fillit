@@ -25,7 +25,7 @@ all: $(NAME)
 
 $(NAME): $(O_FILES)
 	@make -C libft
-	@$(CC) $(CC_FLAGS) -O2 -o $(NAME) $^ -I$(INC_DIR) $(LIBFT)
+	@$(CC) $(CC_FLAGS) -o $(NAME) $^ -I$(INC_DIR) $(LIBFT)
 	@echo "$(NAME) is ready :)"
 
 %.o: $(SRC_DIR)%.c
