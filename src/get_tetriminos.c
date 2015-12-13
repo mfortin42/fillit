@@ -6,7 +6,7 @@
 /*   By: mfortin <mfortin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/02 20:28:52 by mfortin           #+#    #+#             */
-/*   Updated: 2015/12/13 11:10:43 by dw31             ###   ########.fr       */
+/*   Updated: 2015/12/13 16:24:46 by wide-aze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,21 +23,21 @@ static void		check_tetriminos(t_env *env)
 		Y = -1;
 		while (TETRI_STRTAB[X][++Y] != '\0')
 			if (TETRI_STRTAB[X][Y] != '.' && TETRI_STRTAB[X][Y] != '#')
-				ft_exit("error: wrong character");
+				ft_exit("error");
 		if (Y != 4)
-			ft_exit("error: wrong length size");
+			ft_exit("error");
 	}
 	if (X % 4 != 0)
-		ft_exit("error: wrong number of lines");
+		ft_exit("error");
 	if ((NB_TETRI = X / 4) > 26)
-		ft_exit("error: wrong number of tetriminos (max 26)");		
+		ft_exit("error");
 }
 
 static void		check_tetriminos_bis(t_env *env)
 {
-	int cnt;
-	int i;
-	
+	int		cnt;
+	int		i;
+
 	cnt = 0;
 	X = 0;
 	Y = -1;
@@ -55,7 +55,7 @@ static void		check_tetriminos_bis(t_env *env)
 			}
 		}
 		if ((cnt % 4) != 0)
-			ft_exit("error: wrong '#' number");
+			ft_exit("error");
 	}
 }
 
@@ -79,7 +79,7 @@ static void		convert_strtab_to_tetri(t_env *env)
 	int		i;
 
 	if (!(env->tetri = (t_tetri**)ft_memalloc(sizeof(t_tetri*) * NB_TETRI)))
-		ft_exit("malloc error");
+		ft_exit("error");
 	i = -1;
 	while (++i < NB_TETRI)
 	{
@@ -89,7 +89,7 @@ static void		convert_strtab_to_tetri(t_env *env)
 		|| !(TETRI_CONTENT(i)[1] = ft_strsub(TETRI_STRTAB[i * 4 + 1], 0, 4))
 		|| !(TETRI_CONTENT(i)[2] = ft_strsub(TETRI_STRTAB[i * 4 + 2], 0, 4))
 		|| !(TETRI_CONTENT(i)[3] = ft_strsub(TETRI_STRTAB[i * 4 + 3], 0, 4)))
-			ft_exit("malloc error");
+			ft_exit("error");
 		TETRI_X(i) = 0;
 		TETRI_Y(i) = 0;
 		search_first_sharp(TETRI[i]);
@@ -99,11 +99,11 @@ static void		convert_strtab_to_tetri(t_env *env)
 void			get_tetriminos(t_env *env)
 {
 	if ((FD = open(FILENAME, O_RDONLY)) == -1)
-		ft_exit("error: can't open file");
+		ft_exit("error");
 	if ((VREAD = read(FD, BUFF, BUFF_SIZE)) == -1)
-		ft_exit("error: can't read file");
+		ft_exit("error");
 	if ((close(FD)) == -1)
-		ft_exit("error: can't close file");
+		ft_exit("error");
 	BUFF[VREAD] = '\0';
 	if (((VREAD + 1) % 21) != 0)
 		ft_exit("error");

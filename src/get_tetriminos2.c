@@ -6,7 +6,7 @@
 /*   By: mfortin <mfortin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/02 20:28:52 by mfortin           #+#    #+#             */
-/*   Updated: 2015/12/10 08:29:17 by dw31             ###   ########.fr       */
+/*   Updated: 2015/12/13 16:25:02 by wide-aze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,6 @@
 
 static void		search_first_sharp(t_env *env, int i)
 {
-	// on cherche la position du premier # dans le tetri i
-	// des qu'on le trouve on peut return, x/y sont deja sur la bonne position
 	Y = -1;
 	while (++Y < 4)
 	{
@@ -54,7 +52,7 @@ static void		check_1tetri_compo(t_env *env, int i, int count, int must_exit)
 		&& Y < 4 && TETRI_CONTENT(i)[Y - 1][X] == '#')
 			assign_last_x_y(X, Y--, &last_x, &last_y);
 		else if (must_exit)
-			ft_exit("error: somes # aren't nears");
+			ft_exit("error");
 		else if (!must_exit)
 			return ;
 		count++;
@@ -65,21 +63,13 @@ void			check_each_tetri_composition(t_env *env)
 {
 	int		i;
 
-// pour chaque tetri:
-	// on cherche le premier #
-	// on le remonte dans un sens pour etre sur d'etre a l'extremite
-	// puis on peut commencer le check en cherchant dans ses cases adjacentes s'il y a un #
-	// soit x-1 x+1 y-1 y+1 (avec verif qu'on soit pas <0 ni >3)
 	X = 0;
 	Y = 0;
 	i = -1;
 	while (++i < NB_TETRI)
 	{
-	  // on se position sur le premier '#' trouve
 		search_first_sharp(env, i);
-	// on remonte jusqu'a l'extremite (on pouvait etre en plein milieu)
 		check_1tetri_compo(env, i, 0, 0);
-	// on le remonte dans l'autre sens en quittant si erreur (le param 1 ou 0 definit si cette verif est active)
 		check_1tetri_compo(env, i, 0, 1);
 	}
 }

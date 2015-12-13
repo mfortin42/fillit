@@ -6,14 +6,14 @@
 /*   By: mfortin <mfortin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/09 20:31:51 by mfortin           #+#    #+#             */
-/*   Updated: 2015/12/13 16:08:00 by wide-aze         ###   ########.fr       */
+/*   Updated: 2015/12/13 16:26:35 by wide-aze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
 #include "libft.h"
 
-static void 	cp_tetrisaved_to_tetri(t_env *env)
+static void		cp_tetrisaved_to_tetri(t_env *env)
 {
 	int		i;
 
@@ -22,7 +22,6 @@ static void 	cp_tetrisaved_to_tetri(t_env *env)
 	{
 		TETRI[i]->x = TETRI_SAVED[i]->x;
 		TETRI[i]->y = TETRI_SAVED[i]->y;
-
 		ft_memcpy(TETRI[i]->content[0], TETRI_SAVED[i]->content[0], 5);
 		ft_memcpy(TETRI[i]->content[1], TETRI_SAVED[i]->content[1], 5);
 		ft_memcpy(TETRI[i]->content[2], TETRI_SAVED[i]->content[2], 5);
@@ -64,7 +63,7 @@ static void		fill_map(t_env *env)
 	}
 }
 
-void	print_solved_map(t_env *env)
+void			print_solved_map(t_env *env)
 {
 	int		i;
 	int		j;
@@ -77,7 +76,7 @@ void	print_solved_map(t_env *env)
 	{
 		j = -1;
 		while (++j < MAP_SIZE)
-			ft_putchar((MAP[i][j]) ? MAP[i][j] : '.' );
+			ft_putchar((MAP[i][j]) ? MAP[i][j] : '.');
 		ft_putchar('\n');
 	}
 	ft_putchar('\n');
