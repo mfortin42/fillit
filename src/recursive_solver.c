@@ -6,7 +6,7 @@
 /*   By: mfortin <mfortin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/09 20:31:51 by mfortin           #+#    #+#             */
-/*   Updated: 2015/12/13 11:29:25 by dw31             ###   ########.fr       */
+/*   Updated: 2015/12/13 13:16:14 by dw31             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,10 +16,12 @@
 void	recursive_solver(t_env *env, int cur_tetri)
 {
 	TETRI_Y(cur_tetri) = -1;
-	while (++TETRI_Y(cur_tetri) < MAP_WIDTH)
+	while (++TETRI_Y(cur_tetri) < MAP_WIDTH
+	&& TETRI_Y(cur_tetri) < SIZE_MAP_SAVED)
 	{
 		TETRI_X(cur_tetri) = -1;
-		while (++TETRI_X(cur_tetri) < MAP_WIDTH)
+		while (++TETRI_X(cur_tetri) < MAP_WIDTH
+		&& TETRI_X(cur_tetri) < SIZE_MAP_SAVED)
 		{
 			if (add_tetri_in_map(env, cur_tetri))
 				continue ;
