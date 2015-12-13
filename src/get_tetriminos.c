@@ -6,7 +6,7 @@
 /*   By: mfortin <mfortin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/02 20:28:52 by mfortin           #+#    #+#             */
-/*   Updated: 2015/12/09 22:33:19 by dw31             ###   ########.fr       */
+/*   Updated: 2015/12/13 11:10:43 by dw31             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,21 @@ static void		check_tetriminos_bis(t_env *env)
 	}
 }
 
+static void		search_first_sharp(t_tetri *tetri)
+{
+	tetri->y_start = 0;
+	tetri->x_start = 0;
+	while (tetri->content[tetri->y_start][tetri->x_start] != '#')
+	{
+		if (tetri->x_start == 4)
+		{
+			tetri->x_start = 0;
+			tetri->y_start++;
+		}
+		tetri->x_start++;
+	}
+}
+
 static void		convert_strtab_to_tetri(t_env *env)
 {
 	int		i;
@@ -77,6 +92,7 @@ static void		convert_strtab_to_tetri(t_env *env)
 			ft_exit("malloc error");
 		TETRI_X(i) = 0;
 		TETRI_Y(i) = 0;
+		search_first_sharp(TETRI[i]);
 	}
 }
 

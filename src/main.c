@@ -6,7 +6,7 @@
 /*   By: mfortin <mfortin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/02 20:31:51 by mfortin           #+#    #+#             */
-/*   Updated: 2015/12/11 22:19:33 by dw31             ###   ########.fr       */
+/*   Updated: 2015/12/12 21:34:00 by wide-aze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,14 +35,14 @@ static void		init_before_recursive(t_env *env)
 	while (++i < NB_TETRI)
 	{
 		if (!(TETRI_SAVED[i] = (t_tetri*)ft_memalloc(sizeof(t_tetri)))
-		|| !(env->tetri[i]->content = (char**)ft_memalloc(sizeof(char*) * 4))
-		|| !(env->tetri[i]->content[0] = ft_strsub(TETRI_STRTAB[i * 4], 0, 4))
-		|| !(env->tetri[i]->content[1] = ft_strsub(TETRI_STRTAB[i * 4 + 1], 0, 4))
-		|| !(env->tetri[i]->content[2] = ft_strsub(TETRI_STRTAB[i * 4 + 2], 0, 4))
-		|| !(env->tetri[i]->content[3] = ft_strsub(TETRI_STRTAB[i * 4 + 3], 0, 4)))
+		|| !(TETRI_SAVED[i]->content = (char**)ft_memalloc(sizeof(char*) * 4))
+		|| !(TETRI_SAVED[i]->content[0] = ft_strsub(TETRI_STRTAB[i * 4], 0, 4))
+		|| !(TETRI_SAVED[i]->content[1] = ft_strsub(TETRI_STRTAB[i * 4 + 1], 0, 4))
+		|| !(TETRI_SAVED[i]->content[2] = ft_strsub(TETRI_STRTAB[i * 4 + 2], 0, 4))
+		|| !(TETRI_SAVED[i]->content[3] = ft_strsub(TETRI_STRTAB[i * 4 + 3], 0, 4)))
 			ft_exit("malloc error");
-		env->tetri[i]->x = 0;
-		env->tetri[i]->y = 0;
+		TETRI_SAVED[i]->x = 0;
+		TETRI_SAVED[i]->y = 0;
 	}
 	MAP = (char**)ft_memalloc(sizeof(char*) * MAP_WIDTH);
 	i = -1;

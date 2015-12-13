@@ -6,7 +6,7 @@
 /*   By: mfortin <mfortin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/09 20:31:51 by mfortin           #+#    #+#             */
-/*   Updated: 2015/12/12 00:00:45 by dw31             ###   ########.fr       */
+/*   Updated: 2015/12/13 11:29:25 by dw31             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,16 +21,8 @@ void	recursive_solver(t_env *env, int cur_tetri)
 		TETRI_X(cur_tetri) = -1;
 		while (++TETRI_X(cur_tetri) < MAP_WIDTH)
 		{
-// pour chaque position (donc a chaque tour de boucle)
-// on place le tetri dans la map (si pas possible, on passe a la position suivante)
 			if (add_tetri_in_map(env, cur_tetri))
 				continue ;
-// si c'est le dernier c'est que la map est valide (au final la map est verifiee au fur et a mesure)
-// donc si on est sur le dernier on compare si on a une map plus petite que celle deja trouvee
-ft_putstr("CURRENT TETRI = ");
-ft_putnbr(cur_tetri);
-ft_putchar('\n');
-
 			if (cur_tetri + 1 == NB_TETRI)
 			{
 				if (MAP_SIZE < SIZE_MAP_SAVED)
@@ -38,9 +30,6 @@ ft_putchar('\n');
 			}
 			else
 				recursive_solver(env, cur_tetri + 1);
-// si c'est pas le dernier on place les tetris suivants
-
-// on enleve le tetri de la map (pour le placer a la position suivante au prochain tour de boucle)
 			replace_tetri_in_map(env, cur_tetri, 0);
 		}
 	}

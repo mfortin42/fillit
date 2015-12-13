@@ -6,7 +6,7 @@
 /*   By: mfortin <mfortin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/02 20:28:52 by mfortin           #+#    #+#             */
-/*   Updated: 2015/12/11 23:57:48 by dw31             ###   ########.fr       */
+/*   Updated: 2015/12/13 11:05:26 by dw31             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 // A SUPPRIMER
 #include "libft.h"
+#include <stdio.h>
 // A SUPPRIMER
 
 # define TETRI_STRTAB env->tetri_tab
@@ -33,6 +34,8 @@
 # define TETRI_CONTENT(i) env->tetri[i]->content
 # define TETRI_X(i) env->tetri[i]->x
 # define TETRI_Y(i) env->tetri[i]->y
+# define TETRI_XS(i) env->tetri[i]->x_start
+# define TETRI_YS(i) env->tetri[i]->y_start
 # define TETRI_SAVED env->tetri_saved
 # define SIZE_MAP_SAVED env->size_map_saved
 
@@ -41,6 +44,8 @@ typedef struct		s_tetri
 	char			**content;
 	int				x;
 	int				y;
+	int				x_start;
+	int				y_start;
 }					t_tetri;
 
 typedef struct		s_env
