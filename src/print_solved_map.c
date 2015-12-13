@@ -6,7 +6,7 @@
 /*   By: mfortin <mfortin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/09 20:31:51 by mfortin           #+#    #+#             */
-/*   Updated: 2015/12/13 11:29:46 by dw31             ###   ########.fr       */
+/*   Updated: 2015/12/13 15:51:04 by wide-aze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,16 +49,22 @@ static void		fill_map(t_env *env)
 	i = -1;
 	while (++i < NB_TETRI)
 		add_tetri_in_map(env, i);
-return;
-
-	c = 'A';
+	c = 'a';
 	i = -1;
-	while (++i < SIZE_MAP_SAVED)
+	while (++i < MAP_SIZE)
 	{
 		j = -1;
-		while (++j < SIZE_MAP_SAVED)
-			if (MAP[i][j] >= '0' && MAP[i][j] <= '0' + 26)
-				replace_tetri_in_map(env, MAP[i][j], c++);
+		while (++j < MAP_SIZE)
+			if (MAP[i][j] >= 48 && MAP[i][j] <= 74)
+				replace_tetri_in_map(env, MAP[i][j] - '0', c++);
+	}
+	i = -1;
+	while (++i < MAP_SIZE)
+	{
+		j = -1;
+		while (++j < MAP_SIZE)
+			if (MAP[i][j] >= 97 && MAP[i][j] <= 122)
+				MAP[i][j] -= 32;
 	}
 }
 
@@ -71,10 +77,11 @@ void	print_solved_map(t_env *env)
 	empty_map(env);
 	fill_map(env);
 	i = -1;
-	while (++i < SIZE_MAP_SAVED)
+// printf("SIZE_MAP_SAVED=%d\n", SIZE_MAP_SAVED);
+	while (++i < MAP_SIZE)
 	{
 		j = -1;
-		while (++j < SIZE_MAP_SAVED)
+		while (++j < MAP_SIZE)
 			ft_putchar((MAP[i][j]) ? MAP[i][j] : '.' );
 		ft_putchar('\n');
 	}

@@ -6,7 +6,7 @@
 /*   By: mfortin <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/23 20:50:54 by mfortin           #+#    #+#             */
-/*   Updated: 2015/12/08 00:05:42 by wide-aze         ###   ########.fr       */
+/*   Updated: 2015/12/13 15:14:39 by wide-aze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,5 +84,6 @@ void				ft_swap(int *a, int *b);
 int					*ft_sort_integer_table(int *tab, int size);
 void				ft_print_int_table(int *tab, unsigned int size);
 void				ft_exit(const char *message);
+int					ft_max(int x, int y);
 
 #endif

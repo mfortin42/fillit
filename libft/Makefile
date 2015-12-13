@@ -6,7 +6,7 @@
 #    By: mfortin <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/11/23 20:51:06 by mfortin           #+#    #+#              #
-#    Updated: 2015/12/07 23:51:47 by dw31             ###   ########.fr        #
+#    Updated: 2015/12/13 15:14:52 by wide-aze         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,6 +29,7 @@ SRC = ft_atoi.c \
 		ft_lstiter.c \
 		ft_lstmap.c \
 		ft_lstnew.c \
+		ft_max.c \
 		ft_memalloc.c \
 		ft_memccpy.c \
 		ft_memchr.c \

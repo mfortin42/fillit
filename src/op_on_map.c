@@ -6,7 +6,7 @@
 /*   By: mfortin <mfortin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/02 20:28:52 by mfortin           #+#    #+#             */
-/*   Updated: 2015/12/13 11:28:28 by dw31             ###   ########.fr       */
+/*   Updated: 2015/12/13 15:23:57 by wide-aze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,17 +17,16 @@ static int	calc_map_size(t_env *env)
 	int		i;
 	int		j;
 	int		size;
+	int		tmp_max;
 
 	size = 0;
 	i = -1;
 	while (++i < MAP_WIDTH)
 	{
-		if (i > size)
-			size = i;
 		j = -1;
 		while (++j < MAP_WIDTH)
-			if (j > size)
-				size = j;
+			if (MAP[i][j] != 0 && (tmp_max = ft_max(i + 1, j + 1)) > size)
+				size = tmp_max;
 	}
 	return (size);
 }
@@ -58,6 +57,20 @@ int			add_tetri_in_map(t_env *env, int nb_tetri)
 		}
 	}
 	MAP_SIZE = calc_map_size(env);
+
+// printf("--- MAP SAVED ---\n");
+// 	i = -1;
+// 	while (++i < MAP_WIDTH)
+// 	{
+// 		j = -1;
+// 		while (++j < MAP_WIDTH)
+// 			ft_putchar((MAP[i][j]) ? MAP[i][j] : '.' );
+// 		ft_putchar('\n');
+// 	}
+// 	printf("MAP_SIZE = %d\n", MAP_SIZE);
+// 	ft_putchar('\n');
+
+
 	return (0);
 }
 
