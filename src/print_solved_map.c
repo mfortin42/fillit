@@ -6,7 +6,7 @@
 /*   By: mfortin <mfortin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/09 20:31:51 by mfortin           #+#    #+#             */
-/*   Updated: 2015/12/13 16:26:35 by wide-aze         ###   ########.fr       */
+/*   Updated: 2015/12/13 17:28:27 by wide-aze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,5 +79,4 @@ void			print_solved_map(t_env *env)
 			ft_putchar((MAP[i][j]) ? MAP[i][j] : '.');
 		ft_putchar('\n');
 	}
-	ft_putchar('\n');
 }
