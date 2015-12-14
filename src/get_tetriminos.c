@@ -6,7 +6,7 @@
 /*   By: mfortin <mfortin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/02 20:28:52 by mfortin           #+#    #+#             */
-/*   Updated: 2015/12/13 17:07:52 by wide-aze         ###   ########.fr       */
+/*   Updated: 2015/12/14 23:19:56 by wide-aze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,10 +27,12 @@ static void		check_tetriminos(t_env *env)
 		if (Y != 4)
 			ft_exit("error");
 	}
-	if (X % 4 != 0)
+	if (X % 4 != 0 || X == 0)
 		ft_exit("error");
-	if ((NB_TETRI = X / 4) > 26)
+	if ((NB_TETRI = X / 4) > 26 || NB_TETRI < 0)
 		ft_exit("error");
+	if (NB_TETRI == 0)
+		ft_exit(NULL);
 }
 
 static void		check_tetriminos_bis(t_env *env)
@@ -54,7 +56,7 @@ static void		check_tetriminos_bis(t_env *env)
 				Y = -1;
 			}
 		}
-		if ((cnt % 4) != 0)
+		if (cnt == 0 || (cnt % 4) != 0)
 			ft_exit("error");
 	}
 }
@@ -106,7 +108,6 @@ void			get_tetriminos(t_env *env)
 		ft_exit("error");
 	if ((close(FD)) == -1)
 		ft_exit("error");
-	BUFF[VREAD] = '\0';
 	if (((VREAD + 1) % 21) != 0 || ft_strstr(BUFF, "\n\n\n") != NULL)
 		ft_exit("error");
 	if ((TETRI_STRTAB = ft_strsplit(BUFF, '\n')) == NULL)
