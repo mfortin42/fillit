@@ -6,7 +6,7 @@
 /*   By: mfortin <mfortin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/02 20:28:52 by mfortin           #+#    #+#             */
-/*   Updated: 2015/12/14 23:19:56 by wide-aze         ###   ########.fr       */
+/*   Updated: 2015/12/15 08:20:21 by wide-aze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,8 @@ static void		check_tetriminos(t_env *env)
 		ft_exit("error");
 	if (NB_TETRI == 0)
 		ft_exit(NULL);
+	MAP_WIDTH = NB_TETRI * 4;
+	MAP_WIDTH_SAVED = MAP_WIDTH;
 }
 
 static void		check_tetriminos_bis(t_env *env)

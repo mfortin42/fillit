@@ -6,7 +6,7 @@
 /*   By: mfortin <mfortin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/02 20:31:51 by mfortin           #+#    #+#             */
-/*   Updated: 2015/12/13 16:23:41 by wide-aze         ###   ########.fr       */
+/*   Updated: 2015/12/15 08:27:16 by wide-aze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,14 @@ int				main(int ac, char **av)
 	check_ac_av(&env, &ac, av);
 	get_tetriminos(&env);
 	init_before_recursive(&env);
-	recursive_solver(&env, 0);
+	if (env.nb_tetri < 5)
+		env.map_width = 4;
+	else if (env.nb_tetri == 5)
+		env.map_width = 5;
+	else
+		env.map_width = 6;
+	while (++env.map_width < env.map_width_saved && env.size_map_saved == 4242)
+		recursive_solver(&env, 0);
 	print_solved_map(&env);
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: mfortin <mfortin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/02 20:28:52 by mfortin           #+#    #+#             */
-/*   Updated: 2015/12/13 16:30:23 by wide-aze         ###   ########.fr       */
+/*   Updated: 2015/12/15 07:51:54 by wide-aze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,8 @@
 # define BUFF_SIZE 545
 # define X env->x
 # define Y env->y
-# define MAP_WIDTH (NB_TETRI * 4)
+# define MAP_WIDTH env->map_width
+# define MAP_WIDTH_SAVED env->map_width_saved
 # define MAP env->map
 # define MAP_SIZE env->size_map
 # define TETRI env->tetri
@@ -58,6 +59,7 @@ typedef struct		s_env
 	int				size_map;
 	int				size_map_saved;
 	int				map_width;
+	int				map_width_saved;
 	t_tetri			**tetri;
 	t_tetri			**tetri_saved;
 }					t_env;
