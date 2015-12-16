@@ -30,9 +30,9 @@ void      check_each_tetri_composition(t_env *env)
   int   count;
 
   i = -1;
-  count = 0;
   while (++i < NB_TETRI)
   {
+    count = 0;
     Y = -1;
     while (++Y < 4)
     {
