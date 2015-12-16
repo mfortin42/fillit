@@ -6,7 +6,7 @@
 /*   By: mfortin <mfortin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/09 20:31:51 by mfortin           #+#    #+#             */
-/*   Updated: 2015/12/16 08:26:26 by dw31             ###   ########.fr       */
+/*   Updated: 2015/12/16 08:45:08 by dw31             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,12 +15,18 @@
 
 static int		calc_size_start_value(t_env *env)
 {
-	if (NB_TETRI < 5)
-		return (3);
-	else if (NB_TETRI == 5)
-		return (4);
-	else
-		return (5);
+	int		n;
+	float	r;
+	float	s;
+	int		i;
+
+	n = (NB_TETRI) ? NB_TETRI : 1;
+	r = 1;
+	i = 0;
+	while (++i <= n)
+		r = 0.5 * (r + n / r);
+	s = r - (int)r;
+	return ((s > 0) ? (int)r + 1 : r );
 }
 
 static void		init_before_recursive(t_env *env)
