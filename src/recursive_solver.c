@@ -26,7 +26,7 @@ static int		calc_size_start_value(t_env *env)
 	while (++i <= n)
 		r = 0.5 * (r + n / r);
 	s = r - (int)r;
-	return ((s > 0) ? (int)r + 1 : r );
+	return ((s > 0) ? (int)r + 1 : r);
 }
 
 static void		init_before_recursive(t_env *env)
