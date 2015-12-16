@@ -39,16 +39,16 @@ static void		check_1tetri_compo(t_env *env, int i, int count, int must_exit)
 	assign_last_x_y(-1, -1, &last_x, &last_y);
 	while (count < 4)
 	{
-		if ((X != last_x || Y != last_y) && X >= 0 && Y >= 0 && X + 1 < 4
+		if ((X + 1 != last_x || Y != last_y) && X >= 0 && Y >= 0 && X + 1 < 4
 		&& Y < 4 && TETRI_CONTENT(i)[Y][X + 1] == '#')
 			assign_last_x_y(X++, Y, &last_x, &last_y);
-		else if ((X != last_x || Y != last_y) && X - 1 >= 0 && Y >= 0 && X < 4
+		else if ((X - 1 != last_x || Y != last_y) && X - 1 >= 0 && Y >= 0 && X < 4
 		&& Y < 4 && TETRI_CONTENT(i)[Y][X - 1] == '#')
 			assign_last_x_y(X--, Y, &last_x, &last_y);
-		else if ((X != last_x || Y != last_y) && X >= 0 && Y >= 0 && X < 4
+		else if ((X != last_x || Y + 1 != last_y) && X >= 0 && Y >= 0 && X < 4
 		&& Y + 1 < 4 && TETRI_CONTENT(i)[Y + 1][X] == '#')
 			assign_last_x_y(X, Y++, &last_x, &last_y);
-		else if ((X != last_x || Y != last_y) && X >= 0 && Y - 1 >= 0 && X < 4
+		else if ((X != last_x || Y - 1 != last_y) && X >= 0 && Y - 1 >= 0 && X < 4
 		&& Y < 4 && TETRI_CONTENT(i)[Y - 1][X] == '#')
 			assign_last_x_y(X, Y--, &last_x, &last_y);
 		else if (must_exit)
