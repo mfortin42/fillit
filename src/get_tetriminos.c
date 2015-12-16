@@ -6,7 +6,7 @@
 /*   By: mfortin <mfortin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/02 20:28:52 by mfortin           #+#    #+#             */
-/*   Updated: 2015/12/15 08:20:21 by wide-aze         ###   ########.fr       */
+/*   Updated: 2015/12/16 08:25:28 by dw31             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ static void		check_tetriminos(t_env *env)
 		ft_exit("error");
 	if (NB_TETRI == 0)
 		ft_exit(NULL);
-	MAP_WIDTH = NB_TETRI * 4;
+	MAP_WIDTH = NB_TETRI * 4 + 1;
 	MAP_WIDTH_SAVED = MAP_WIDTH;
 }
 
@@ -100,11 +100,11 @@ static void		convert_strtab_to_tetri(t_env *env)
 	}
 }
 
-void			get_tetriminos(t_env *env)
+void			get_tetriminos(t_env *env, char *filename)
 {
 	int		i;
 
-	if ((FD = open(FILENAME, O_RDONLY)) == -1)
+	if ((FD = open(filename, O_RDONLY)) == -1)
 		ft_exit("error");
 	if ((VREAD = read(FD, BUFF, BUFF_SIZE)) == -1)
 		ft_exit("error");
