@@ -13,60 +13,33 @@
 #include "fillit.h"
 #include "libft.h"
 
-static void		search_first_sharp(t_env *env, int i)
+static void   check_cur_pos_tetri(t_env *env, int i, int *count)
 {
-	Y = -1;
-	while (++Y < 4)
-	{
-		X = -1;
-		while (++X < 4)
-			if (TETRI_CONTENT(i)[Y][X] == '#')
-				return ;
-	}
+  if (*count < 4 && (X < 3 && TETRI_CONTENT(i)[Y][X + 1] == '#')
+  || (X > 0 && TETRI_CONTENT(i)[Y][X - 1] == '#')
+  || (Y < 3 && TETRI_CONTENT(i)[Y + 1][X] == '#')
+  || (Y > 0 && TETRI_CONTENT(i)[Y - 1][X] == '#'))
+    *count = *count + 1;
+  else
+    ft_exit("error");
 }
 
-static void		assign_last_x_y(int x, int y, int *last_x, int *last_y)
+void      check_each_tetri_composition(t_env *env)
 {
-	*last_y = y;
-	*last_x = x;
-}
+  int   i;
+  int   count;
 
-static void		check_1tetri_compo(t_env *env, int i, int count, int must_exit)
-{
-	int		last_x;
-	int		last_y;
-
-	assign_last_x_y(-1, -1, &last_x, &last_y);
-	while (++count < 4)
-	{
-		if ((X + 1 != last_x || Y != last_y) && X >= 0 && Y >= 0 && X + 1 < 4
-		&& Y < 4 && TETRI_CONTENT(i)[Y][X + 1] == '#')
-			assign_last_x_y(X++, Y, &last_x, &last_y);
-		else if ((X - 1 != last_x || Y != last_y) && X - 1 >= 0 && Y >= 0
-		&& X < 4 && Y < 4 && TETRI_CONTENT(i)[Y][X - 1] == '#')
-			assign_last_x_y(X--, Y, &last_x, &last_y);
-		else if ((X != last_x || Y + 1 != last_y) && X >= 0 && Y >= 0 && X < 4
-		&& Y + 1 < 4 && TETRI_CONTENT(i)[Y + 1][X] == '#')
-			assign_last_x_y(X, Y++, &last_x, &last_y);
-		else if ((X != last_x || Y - 1 != last_y) && X >= 0 && Y - 1 >= 0
-		&& X < 4 && Y < 4 && TETRI_CONTENT(i)[Y - 1][X] == '#')
-			assign_last_x_y(X, Y--, &last_x, &last_y);
-		else if (must_exit)
-			ft_exit("error");
-		else if (!must_exit)
-			return ;
-	}
-}
-
-void			check_each_tetri_composition(t_env *env)
-{
-	int		i;
-
-	i = -1;
-	while (++i < NB_TETRI)
-	{
-		search_first_sharp(env, i);
-		check_1tetri_compo(env, i, 0, 0);
-		check_1tetri_compo(env, i, 0, 1);
-	}
+  i = -1;
+  count = 0;
+  while (++i < NB_TETRI)
+  {
+    Y = -1;
+    while (++Y < 4)
+    {
+      X = -1;
+      while (++X < 4)
+        if (TETRI_CONTENT(i)[Y][X] == '#')
+          check_cur_pos_tetri(env, i, &count);
+    }
+  }
 }
