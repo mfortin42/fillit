@@ -15,10 +15,10 @@
 
 static void   check_cur_pos_tetri(t_env *env, int i, int *count)
 {
-  if (*count < 4 && (X < 3 && TETRI_CONTENT(i)[Y][X + 1] == '#')
+  if (*count < 4 && ((X < 3 && TETRI_CONTENT(i)[Y][X + 1] == '#')
   || (X > 0 && TETRI_CONTENT(i)[Y][X - 1] == '#')
   || (Y < 3 && TETRI_CONTENT(i)[Y + 1][X] == '#')
-  || (Y > 0 && TETRI_CONTENT(i)[Y - 1][X] == '#'))
+  || (Y > 0 && TETRI_CONTENT(i)[Y - 1][X] == '#')))
     *count = *count + 1;
   else
     ft_exit("error");
