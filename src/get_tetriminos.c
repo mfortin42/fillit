@@ -29,7 +29,8 @@ static void		check_tetriminos(t_env *env)
 	}
 	if (X % 4 != 0 || X == 0)
 		ft_exit("error");
-	if ((NB_TETRI = X / 4) > 26 || NB_TETRI < 0)
+	NB_TETRI = X / 4;
+	if (NB_TETRI > 26 || NB_TETRI < 0)
 		ft_exit("error");
 	if (NB_TETRI == 0)
 		ft_exit(NULL);
