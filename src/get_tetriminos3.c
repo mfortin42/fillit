@@ -27,25 +27,25 @@ static void		init_tabs(int *lines, int *col)
 
 static void		fill_tabs(t_env *env, int tetri, int *lines, int *col)
 {
-  int     i;
-  int     j;
-  
-  i = -1;
-  while (++i < 4)
-  {
-    j = -1;
-    while (++j < 4)
-    {
-      if (TETRI_CONTENT(tetri)[i][j] == '#')
-      {
-      	col[j] = 1;
-      	lines[i] = 1;
-      }
-    }
-  }
+	int		i;
+	int		j;
+
+	i = -1;
+	while (++i < 4)
+	{
+		j = -1;
+		while (++j < 4)
+		{
+			if (TETRI_CONTENT(tetri)[i][j] == '#')
+			{
+				col[j] = 1;
+				lines[i] = 1;
+			}
+		}
+	}
 }
 
-static int 		search_first(int *tab)
+static int		search_first(int *tab)
 {
 	if (tab[0])
 		return (0);
