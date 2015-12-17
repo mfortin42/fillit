@@ -21,7 +21,7 @@ static void		init_tabs(int *lines, int *col)
 	while (++i < 4)
 	{
 		lines[i] = 0;
-		col[i] = 0;			
+		col[i] = 0;
 	}
 }
 

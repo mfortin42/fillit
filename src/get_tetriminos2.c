@@ -13,7 +13,7 @@
 #include "fillit.h"
 #include "libft.h"
 
-static int 		nb_line_with_sharp(t_env *env, int tetri)
+static int		nb_line_with_sharp(t_env *env, int tetri)
 {
 	int		i;
 	int		j;
@@ -36,12 +36,12 @@ static int 		nb_line_with_sharp(t_env *env, int tetri)
 	return (count);
 }
 
-static int 		nb_col_with_sharp(t_env *env, int tetri)
+static int		nb_col_with_sharp(t_env *env, int tetri)
 {
-	int     i;
-	int     j;
-	int     count;
-  
+	int		i;
+	int		j;
+	int		count;
+
 	count = 0;
 	i = -1;
 	while (++i < 4)
@@ -50,7 +50,7 @@ static int 		nb_col_with_sharp(t_env *env, int tetri)
 		while (++j < 4)
 		{
 			if (TETRI_CONTENT(tetri)[j][i] == '#')
-			{			
+			{
 				count++;
 				break ;
 			}
