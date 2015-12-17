@@ -107,7 +107,7 @@ void			get_tetriminos(t_env *env, char *filename)
 
 	if ((FD = open(filename, O_RDONLY)) == -1)
 		ft_exit("error");
-	if ((VREAD = read(FD, BUFF, BUFF_SIZE)) == -1)
+	if ((VREAD = read(FD, BUFF, BUFF_SIZE)) == -1 || VREAD == 546)
 		ft_exit("error");
 	if ((close(FD)) == -1)
 		ft_exit("error");
