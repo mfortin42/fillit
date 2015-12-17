@@ -7,6 +7,7 @@ SRC_DIR = ./src/
 SRC_FILES = main.c \
  			get_tetriminos.c \
  			get_tetriminos2.c \
+ 			get_tetriminos3.c \
  			op_on_map.c \
  			print_solved_map.c \
  			recursive_solver.c

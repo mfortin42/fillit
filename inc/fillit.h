@@ -6,7 +6,7 @@
 /*   By: mfortin <mfortin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/02 20:28:52 by mfortin           #+#    #+#             */
-/*   Updated: 2015/12/16 08:26:21 by dw31             ###   ########.fr       */
+/*   Updated: 2015/12/17 09:00:23 by wide-aze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@
 # define VREAD env->vread
 # define BUFF env->buff
 # define BUFF_SIZE 545
+# define A env->a
+# define B env->b
 # define X env->x
 # define Y env->y
 # define MAP_WIDTH env->map_width
@@ -51,6 +53,8 @@ typedef struct		s_env
 	int				fd;
 	int				vread;
 	char			buff[BUFF_SIZE + 1];
+	int				a;
+	int				b;
 	int				x;
 	int				y;
 	char			**map;
@@ -64,6 +68,7 @@ typedef struct		s_env
 
 void				check_each_tetri_composition(t_env *env);
 void				get_tetriminos(t_env *env, char *filename);
+void				check_tetri3(t_env *env, int i, int nb_col, int nb_lines);
 void				replace_tetri_in_map(t_env *env, int nb_tetri, char c);
 void				del_tetri_in_map(t_env *env, int nb_tetri);
 int					add_tetri_in_map(t_env *env, int nb_tetri);
