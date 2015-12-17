@@ -66,12 +66,12 @@ void			check_tetri3(t_env *env, int i, int nb_col, int nb_lines)
 	fill_tabs(env, i, &lines[0], &col[0]);
 	first = search_first(&col[0]);
 	if (nb_col == 2 && (first > 2 || !col[first + 1]))
-		ft_exit("error1");
+		ft_exit("error");
 	if (nb_col == 3 && (first > 1 || !col[first + 1] || !col[first + 2]))
-		ft_exit("error2");
+		ft_exit("error");
 	first = search_first(&lines[0]);
 	if (nb_lines == 2 && (first > 2 || !lines[first + 1]))
-		ft_exit("error3");
+		ft_exit("error");
 	if (nb_lines == 3 && (first > 1 || !lines[first + 1] || !lines[first + 2]))
-		ft_exit("error4");
+		ft_exit("error");
 }
